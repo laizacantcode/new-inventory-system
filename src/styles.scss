@@ -1,4 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --primary-color-IRAS: #2770a0;
+  --primary-color-dark: #003f7a;
+
+  --secondary-color-orange: #ff6123;
+  --secondary-color-cyanBlue: #3084c6;
+  --secondary-color-teal: #008392;
+  --secondary-color-red: #da1a1a;
+  --secondary-color-cyan: #cbf3f1;
+  --secondary-color-lightcyan: #eef8f3;
+  --secondary-color-yellow: #ffffcc;
+  --secondary-color-pink: #fdeef3;
+
+  --functional-color-black: #000000;
+  --functional-color-grey1: #515151;
+  --functional-color-grey2: #717171;
+  --functional-color-grey3: #c9c9c9;
+  --functional-color-grey4: #f2f2f2;
+  --functional-color-grey5: #f5f5f5;
+  --functional-color-grey6: #f6f8fa;
+  --functional-color-white: #ffffff;
+
+  --font-family: "Source Sans Pro", sans-serif;
+  --margin: 15px;
+}
