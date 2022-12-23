@@ -1,13 +1,13 @@
-
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Products } from './interface/products';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  @Input() product: ReadonlyArray<Products> = [];
-  @Output() add = new EventEmitter<string>();
+export class AppComponent implements OnInit {
+  constructor() {}
+
+  ngOnInit(): void {}
 }

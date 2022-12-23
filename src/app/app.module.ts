@@ -16,6 +16,7 @@ import { ProductformComponent } from './components/productform/productform.compo
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './ngrx/reducer/product.reducer';
 import { collectionReducer } from './ngrx/reducer/collection.reducer';
+import { ProductlistComponent } from './components/productlist/productlist.component';
 
 
 
@@ -25,7 +26,8 @@ import { collectionReducer } from './ngrx/reducer/collection.reducer';
     AppComponent,
     NavbarComponent,
     ModalComponent,
-    ProductformComponent
+    ProductformComponent,
+    ProductlistComponent
   ],
   imports: [
     BrowserModule,

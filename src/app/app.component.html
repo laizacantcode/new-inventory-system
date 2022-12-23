@@ -1,9 +1,0 @@
-<app-navbar></app-navbar>
-
-<div class="product-item" *ngFor="let prod of products">
-  <p>{{ prod.productName }}</p>
-
-  <button (click)="add.emit(prod.id)" data-test="add-button">
-    Add to Collection
-  </button>
-</div>
