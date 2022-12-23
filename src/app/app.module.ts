@@ -14,6 +14,10 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ProductformComponent } from './components/productform/productform.component';
 
 import { StoreModule } from '@ngrx/store';
+import { productReducer } from './products/states/product.reducer';
+import { collectionReducer } from './products/states/collection.reducer';
+import { ProductlistComponent } from './products/productlist/productlist.component';
+import { ProductcollectionComponent } from './products/productcollection/productcollection.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +25,13 @@ import { StoreModule } from '@ngrx/store';
     NavbarComponent,
     ModalComponent,
     ProductformComponent,
+    ProductlistComponent,
+    ProductcollectionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({books: productReducer, collection: collectionReducer}),
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,

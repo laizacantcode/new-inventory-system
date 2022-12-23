@@ -1,0 +1,7 @@
+<div class="book-item" *ngFor="let product of products">
+  <p>{{ product.id }}</p>
+
+  <button (click)="add.emit(product.id)" data-test="add-button">
+    Add to Collection
+  </button>
+</div>
