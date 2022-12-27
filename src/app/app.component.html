@@ -63,10 +63,11 @@
         />
       </mat-form-field>
 
-      <button mat-flat-button fxFlex="10">ADD</button>
+      <button mat-flat-button fxFlex="10" *ngIf="formButton === false">ADD</button>
+      <button mat-flat-button fxFlex="10" *ngIf="formButton === true" (click)="update()">UPDATE</button>
     </form>
   </div>
   <div class="display-products" fxFlex="100">
-    <app-displayproducts></app-displayproducts>
+    <app-displayproducts (currentData)="patch($event)"></app-displayproducts>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { Products } from '../interface/products';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -31,5 +32,17 @@ export class InventoryService {
         newProduct
       )
       .subscribe((response) => console.log('success'));
+  }
+
+  getProductInfo(productID: number) {
+    return this.http.get<any>(
+      `https://63a19bb5a543280f775bc426.mockapi.io/Products/${productID}`
+    );
+  }
+  
+  update(productID: number, productInfo: any) {
+    return this.http.put('https://63a19bb5a543280f775bc426.mockapi.io/Products/' + productID,  productInfo)
+    .subscribe((response) => console.log('sucesss')
+    );
   }
 }

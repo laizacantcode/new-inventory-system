@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { increment, decrement, reset } from './ngrx/actions/counter.actions';
@@ -20,10 +20,16 @@ export class AppComponent implements OnInit {
   createProductForm!: FormGroup;
   formState!: any;
   count$: Observable<number>;
-  productQuantity!: number
-  constructor(private service: InventoryService, private store: Store<{ count: number }>) {
+  productQuantity!: number;
+  formButton = false;
+  @Input() currentProductInfo!: Products;
+
+  constructor(
+    private service: InventoryService,
+    private store: Store<{ count: number }>
+  ) {
     this.count$ = store.select('count');
-    this.count$.subscribe((event)=> this.productQuantity = event)
+    this.count$.subscribe((event) => (this.productQuantity = event));
   }
 
   ngOnInit(): void {
@@ -51,17 +57,29 @@ export class AppComponent implements OnInit {
   }
 
   increment() {
-    this.createProductForm.setValue({...this.createProductForm.value, productQty: this.productQuantity })
+    this.createProductForm.setValue({
+      ...this.createProductForm.value,
+      productQty: this.productQuantity,
+    });
     this.store.dispatch(increment());
   }
- 
+
   decrement() {
-    this.createProductForm.setValue({...this.createProductForm.value, productQty: this.productQuantity })
+    this.createProductForm.setValue({
+      ...this.createProductForm.value,
+      productQty: this.productQuantity,
+    });
     this.store.dispatch(decrement());
   }
- 
+
   reset() {
     this.store.dispatch(reset());
   }
-  
+
+  patch(currentData: Object) {
+    this.formButton = true;
+    this.createProductForm.patchValue(currentData);
+  }
+
+  update() {}
 }
