@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -8,12 +8,17 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  formState!: boolean;
+  @Output() openForm = new EventEmitter<boolean>;
 
   constructor(private modal: MatDialog) { }
 
   ngOnInit(): void {}
   openModal(){
-      this.modal.open(ModalComponent)
+      // this.modal.open(ModalComponent)
+      this.formState = true
+      this.openForm.emit(this.formState)
+      console.log(this.formState)
   }
 
 }
