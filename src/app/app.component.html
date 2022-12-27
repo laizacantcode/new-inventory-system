@@ -6,9 +6,14 @@
   <div
     class="form"
     fxFlex="100"
+    fxLayout="row wrap"
     fxLayoutAlign="center center"
     *ngIf="formState === true"
   >
+    <div fxFlex="100" fxLayoutAlign="end" >
+      <mat-icon (click)="close()">close</mat-icon>
+    </div>
+    
     <form
       (ngSubmit)="create($event, productForm)"
       #productForm="ngForm"

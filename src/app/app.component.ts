@@ -76,7 +76,12 @@ export class AppComponent implements OnInit {
     this.store.dispatch(reset());
   }
 
+  close() {
+    this.formState = false;
+  }
+
   patch(currentData: Object) {
+    this.formState = true;
     this.formButton = true;
     this.createProductForm.patchValue(currentData);
   }
