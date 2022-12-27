@@ -1,0 +1,33 @@
+<div class="display-products">
+  <div>
+    <mat-list dense class="mat-elevation-z8">
+      <mat-list-item *ngFor="let product of productList | async">
+        <span matLine
+          ><strong>{{ product.id }}</strong></span
+        >
+        <span matLine>{{ product.productName }}</span>
+        <button mat-icon-button>
+          <mat-icon class="view-button" matTooltip="VIEW">visibility</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon class="edit-button" matTooltip="EDIT">edit_square</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon
+            class="delete-button"
+            matTooltip="DELETE"
+            (click)="delete(product.id)"
+            >disabled_by_default</mat-icon
+          >
+        </button>
+      </mat-list-item>
+      <mat-paginator
+        #paginator
+        [length]="100"
+        [pageSize]="10"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </mat-list>
+  </div>
+</div>

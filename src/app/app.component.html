@@ -1,8 +1,6 @@
 <div class="app-component-main" fxLayout="row wrap">
   <div class="nav-bar" fxFlex="100">
-    <app-navbar 
-    (openForm) = "openForm($event)"
-    ></app-navbar>
+    <app-navbar (openForm)="openForm($event)"></app-navbar>
   </div>
 
   <div
@@ -12,12 +10,14 @@
     *ngIf="formState === true"
   >
     <form
+      (ngSubmit)="create($event, productForm)"
+      #productForm="ngForm"
       [formGroup]="createProductForm"
       fxLayoutGap="10px"
       fxLayoutAlign="center center"
       fxFlex="100"
     >
-      <mat-form-field fxFlex="30" appearance="outline">
+      <mat-form-field fxFlex="40" appearance="outline">
         <mat-label>Product Name</mat-label>
         <input
           matInput
@@ -27,7 +27,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field fxFlex="10" appearance="outline">
+      <mat-form-field fxFlex="30" appearance="outline">
         <mat-label>Product Quantity</mat-label>
         <input
           matInput
@@ -35,9 +35,15 @@
           placeholder="Product Quantity"
           formControlName="productQty"
         />
+        <button class="qty" matSuffix (click)="increment()">
+          <mat-icon>keyboard_arrow_up</mat-icon>
+        </button>
+        <button class="qty" matSuffix (click)="decrement()">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
       </mat-form-field>
 
-      <mat-form-field fxFlex="10" appearance="outline">
+      <mat-form-field fxFlex="20" appearance="outline">
         <mat-label>Product Price</mat-label>
         <input
           matInput
@@ -47,7 +53,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field fxFlex="40" appearance="outline">
+      <mat-form-field fxFlex="30" appearance="outline">
         <mat-label>Product Description</mat-label>
         <input
           matInput
@@ -59,5 +65,8 @@
 
       <button mat-flat-button fxFlex="10">ADD</button>
     </form>
+  </div>
+  <div class="display-products" fxFlex="100">
+    <app-displayproducts></app-displayproducts>
   </div>
 </div>

@@ -11,9 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../app/styles/material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ModalComponent } from './components/modal/modal.component';
-
+import { DisplayproductsComponent } from './components/displayproducts/displayproducts.component';
 
 import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './ngrx/reducers/counter.reducer';
 
 
 @NgModule({
@@ -21,11 +22,12 @@ import { StoreModule } from '@ngrx/store';
     AppComponent,
     NavbarComponent,
     ModalComponent,
+    DisplayproductsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ count: counterReducer }),
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,

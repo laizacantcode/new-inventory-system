@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { increment, decrement, reset } from './ngrx/actions/counter.actions';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormGroupDirective,
+} from '@angular/forms';
+import { Products } from './interface/products';
+import { InventoryService } from './service/inventory.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +19,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AppComponent implements OnInit {
   createProductForm!: FormGroup;
   formState!: any;
-  constructor(private store: Store) {}
+  count$: Observable<number>;
+  productQuantity!: number
+  constructor(private service: InventoryService, private store: Store<{ count: number }>) {
+    this.count$ = store.select('count');
+    this.count$.subscribe((event)=> this.productQuantity = event)
+  }
 
   ngOnInit(): void {
     this.createProductForm = new FormGroup({
-      productID: new FormControl(null, [Validators.required]),
+      productID: new FormControl(null),
       productName: new FormControl(null, Validators.required),
       productQty: new FormControl(null, Validators.required),
       productPrice: new FormControl(null, Validators.required),
@@ -22,8 +36,32 @@ export class AppComponent implements OnInit {
     });
   }
   openForm(openForm: Object) {
-    this.formState = openForm
-    console.log(this.formState)
+    this.formState = openForm;
+    console.log(this.formState);
+  }
+
+  create(newProduct: Products, productForm: FormGroupDirective) {
+    if (this.createProductForm.invalid) {
+      console.log('INVALID!');
+    } else {
+      newProduct = this.createProductForm.value;
+      this.service.create(newProduct);
+      productForm.resetForm();
+    }
+  }
+
+  increment() {
+    this.createProductForm.setValue({...this.createProductForm.value, productQty: this.productQuantity })
+    this.store.dispatch(increment());
+  }
+ 
+  decrement() {
+    this.createProductForm.setValue({...this.createProductForm.value, productQty: this.productQuantity })
+    this.store.dispatch(decrement());
+  }
+ 
+  reset() {
+    this.store.dispatch(reset());
   }
   
 }
