@@ -5,7 +5,7 @@
         <span matLine><strong>{{ product.id }}</strong></span>
         <span matLine>{{ product.productName }}</span>
         <button mat-icon-button>
-          <mat-icon class="view-button" matTooltip="VIEW" >visibility</mat-icon>
+          <mat-icon class="view-button" matTooltip="VIEW" (click)="viewProduct(product.id)">visibility</mat-icon>
         </button>
         <button mat-icon-button (click)="updateProductInfo(product.id)">
           <mat-icon class="edit-button" matTooltip="EDIT" >edit_square</mat-icon>

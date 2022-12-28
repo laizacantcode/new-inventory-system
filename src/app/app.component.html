@@ -89,7 +89,10 @@
       *ngIf="formButton === true"
       (click)="update($event, productForm)">UPDATE</button>
   </div>
-  <div class="display-products" fxFlex="100">
-    <app-displayproducts (currentData)="patch($event)"></app-displayproducts>
+
+  <div class="display-products" fxFlex="100" fxLayout="row wrap" fxLayoutGap="15px">
+    <app-displayproducts (currentData)="patch($event)" (view)="displayProduct($event)" fxFlex="70"></app-displayproducts>
+    <app-product fxFlex="28" [viewProduct] = "viewProduct"></app-product>
   </div>
+  
 </div>

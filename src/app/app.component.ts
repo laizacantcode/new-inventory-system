@@ -22,8 +22,9 @@ export class AppComponent implements OnInit {
   count$: Observable<number>;
   productQuantity!: number;
   formButton = false;
-  @Input() currentProductInfo!: Products;
   productID!: number;
+
+  viewProduct!: Products;
 
   constructor(
     private service: InventoryService,
@@ -84,10 +85,15 @@ export class AppComponent implements OnInit {
     this.formState = true;
     this.formButton = true;
     this.createProductForm.patchValue(currentData);
-    this.productID = currentData.id
+    this.productID = currentData.id;
   }
 
   update(productID: any, productInfo: FormGroupDirective) {
-    this.service.update(this.productID, this.createProductForm.value)
+    this.service.update(this.productID, this.createProductForm.value);
+  }
+
+  displayProduct(view: Products) {
+    this.viewProduct = view;
+    console.log(this.viewProduct)
   }
 }
