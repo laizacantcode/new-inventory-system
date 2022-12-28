@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { increment, decrement, reset } from './ngrx/actions/counter.actions';
 import {
   FormGroup,
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   productQuantity!: number;
   formButton = false;
   @Input() currentProductInfo!: Products;
+  productID!: number;
 
   constructor(
     private service: InventoryService,
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createProductForm = new FormGroup({
-      productID: new FormControl(null),
+      productID: new FormControl(null, Validators.required),
       productName: new FormControl(null, Validators.required),
       productQty: new FormControl(null, Validators.required),
       productPrice: new FormControl(null, Validators.required),
@@ -43,7 +44,6 @@ export class AppComponent implements OnInit {
   }
   openForm(openForm: Object) {
     this.formState = openForm;
-    console.log(this.formState);
   }
 
   create(newProduct: Products, productForm: FormGroupDirective) {
@@ -80,11 +80,14 @@ export class AppComponent implements OnInit {
     this.formState = false;
   }
 
-  patch(currentData: Object) {
+  patch(currentData: Products) {
     this.formState = true;
     this.formButton = true;
     this.createProductForm.patchValue(currentData);
+    this.productID = currentData.id
   }
 
-  update() {}
+  update(productID: any, productInfo: FormGroupDirective) {
+    this.service.update(this.productID, this.createProductForm.value)
+  }
 }

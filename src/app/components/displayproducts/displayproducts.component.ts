@@ -28,6 +28,7 @@ export class DisplayproductsComponent implements OnInit {
     this.service.getProductInfo(productID).subscribe((res: Products) => this.currentData.emit(res));
   }
   
+  
 
 
 }

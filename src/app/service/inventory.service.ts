@@ -4,7 +4,6 @@ import { Products } from '../interface/products';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -39,10 +38,8 @@ export class InventoryService {
       `https://63a19bb5a543280f775bc426.mockapi.io/Products/${productID}`
     );
   }
-  
+
   update(productID: number, productInfo: any) {
-    return this.http.put('https://63a19bb5a543280f775bc426.mockapi.io/Products/' + productID,  productInfo)
-    .subscribe((response) => console.log('sucesss')
-    );
+    return this.http.patch(`https://63a19bb5a543280f775bc426.mockapi.io/Products/${productID}`, productInfo)
   }
 }

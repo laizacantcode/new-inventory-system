@@ -10,10 +10,10 @@
     fxLayoutAlign="center center"
     *ngIf="formState === true"
   >
-    <div fxFlex="100" fxLayoutAlign="end" >
+    <div fxFlex="100" fxLayoutAlign="end">
       <mat-icon (click)="close()">close</mat-icon>
     </div>
-    
+
     <form
       (ngSubmit)="create($event, productForm)"
       #productForm="ngForm"
@@ -22,7 +22,18 @@
       fxLayoutAlign="center center"
       fxFlex="100"
     >
-      <mat-form-field fxFlex="40" appearance="outline">
+
+    <mat-form-field fxFlex="10" appearance="outline">
+      <mat-label>ID</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Product ID"
+        formControlName="productID"
+      />
+    </mat-form-field>
+
+      <mat-form-field fxFlex="30" appearance="outline">
         <mat-label>Product Name</mat-label>
         <input
           matInput
@@ -68,9 +79,15 @@
         />
       </mat-form-field>
 
-      <button mat-flat-button fxFlex="10" *ngIf="formButton === false">ADD</button>
-      <button mat-flat-button fxFlex="10" *ngIf="formButton === true" (click)="update()">UPDATE</button>
+      <button mat-flat-button fxFlex="10" *ngIf="formButton === false">
+        ADD
+      </button>
     </form>
+    <button
+      mat-flat-button
+      fxFlex="10"
+      *ngIf="formButton === true"
+      (click)="update($event, productForm)">UPDATE</button>
   </div>
   <div class="display-products" fxFlex="100">
     <app-displayproducts (currentData)="patch($event)"></app-displayproducts>

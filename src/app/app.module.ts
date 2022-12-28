@@ -15,6 +15,7 @@ import { DisplayproductsComponent } from './components/displayproducts/displaypr
 
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './ngrx/reducers/counter.reducer';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { counterReducer } from './ngrx/reducers/counter.reducer';
     NavbarComponent,
     ModalComponent,
     DisplayproductsComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
