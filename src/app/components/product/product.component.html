@@ -1,6 +1,27 @@
 <mat-card>
-    <mat-card-content>
-        <h1>{{viewProduct?.productName}}</h1>
-    </mat-card-content>
-</mat-card>
+  <mat-card-content
+    fxLayout="column wrap"
+    fxFlex="100"
+    fxLayoutAlign="center center"
+  >
+    <h1>{{ viewProduct?.productName | uppercase }}</h1>
+    <h3>
+      <mat-icon>assignment_ind</mat-icon>
+      {{ viewProduct?.productID }}
+    </h3>
+    <h3>
+      <mat-icon>attach_money</mat-icon>
+      {{ viewProduct?.productPrice }}
+    </h3>
+    <h3>
+      <mat-icon>shop</mat-icon>
+      {{ viewProduct?.productQty }}
+    </h3>
+    <h3>
+      <mat-icon>description</mat-icon>
+      {{ viewProduct?.productDescription }}
+    </h3>
+  </mat-card-content>
 
+
+</mat-card>
