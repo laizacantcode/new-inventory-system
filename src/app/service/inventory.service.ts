@@ -39,7 +39,7 @@ export class InventoryService {
     );
   }
 
-  update(productID: number, productInfo: any) {
-    return this.http.patch(`https://63a19bb5a543280f775bc426.mockapi.io/Products/${productID}`, productInfo)
+  update(productID: number, productInfo: Products) {
+    return this.http.put(`https://63a19bb5a543280f775bc426.mockapi.io/Products/${productID}`, productInfo)
   }
 }

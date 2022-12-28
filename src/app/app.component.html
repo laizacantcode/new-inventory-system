@@ -83,11 +83,13 @@
         ADD
       </button>
     </form>
+
     <button
       mat-flat-button
       fxFlex="10"
       *ngIf="formButton === true"
-      (click)="update($event, productForm)">UPDATE</button>
+      (click)="update()">UPDATE</button>
+
   </div>
 
   <div class="display-products" fxFlex="100" fxLayout="row wrap" fxLayoutGap="15px">

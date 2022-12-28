@@ -88,12 +88,17 @@ export class AppComponent implements OnInit {
     this.productID = currentData.id;
   }
 
-  update(productID: any, productInfo: FormGroupDirective) {
-    this.service.update(this.productID, this.createProductForm.value);
-  }
-
   displayProduct(view: Products) {
     this.viewProduct = view;
-    console.log(this.viewProduct)
+    console.log(this.viewProduct);
+  }
+
+  update(): void {
+    this.service
+      .update(this.productID, this.createProductForm.value)
+      .subscribe((res: any) => {
+        console.log('DATA UPDATED SUCCESSFULLY.');
+        console.log(res);
+      });
   }
 }
