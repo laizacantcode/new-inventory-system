@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   productQuantity!: number;
   formButton = false;
   productID!: number;
-
   viewProduct!: Products;
 
   constructor(
@@ -36,19 +35,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createProductForm = new FormGroup({
-      productID: new FormControl(null, Validators.required),
-      productName: new FormControl(null, Validators.required),
-      productQty: new FormControl(null, Validators.required),
-      productPrice: new FormControl(null, Validators.required),
-      productDescription: new FormControl(null, Validators.required),
+      productID: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
+      productName: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
+      productQty: new FormControl('0', [Validators.required, Validators.min(1)]),
+      productPrice: new FormControl(null, [Validators.required, Validators.min(1)]),
+      productDescription: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(100)] ),
     });
   }
-  openForm(openForm: Object) {
+  openForm(openForm: boolean) {
     this.formState = openForm;
   }
 
   create(newProduct: Products, productForm: FormGroupDirective) {
-    if (this.createProductForm.invalid) {
+    if (this.createProductForm?.invalid) {
       console.log('INVALID!');
     } else {
       newProduct = this.createProductForm.value;

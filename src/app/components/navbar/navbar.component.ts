@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {}
   openModal(){
-      // this.modal.open(ModalComponent)
       this.formState = true
       this.openForm.emit(this.formState)
       console.log(this.formState)
