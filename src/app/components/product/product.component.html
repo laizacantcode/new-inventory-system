@@ -1,27 +1,12 @@
-<mat-card>
-  <mat-card-content
-    fxLayout="column"
-    fxFlex="100"
-    fxLayoutAlign="center center"
-  >
-    <h1>{{ viewProduct?.productName | uppercase }}</h1>
-    <h3>
-      <mat-icon>assignment_ind</mat-icon>
-      {{ viewProduct?.productID }}
-    </h3>
-    <h3>
-      <mat-icon>attach_money</mat-icon>
-      {{ viewProduct?.productPrice }}
-    </h3>
-    <h3>
-      <mat-icon>shop</mat-icon>
-      {{ viewProduct?.productQty }}
-    </h3>
-    <h3>
-      <mat-icon>description</mat-icon>
-      {{ viewProduct?.productDescription }}
-    </h3>
-  </mat-card-content>
-
-
+<mat-card *ngIf="view == true">
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                <span matLine><strong>{{viewProduct?.productName}}</strong></span>
+                <span matLine>{{viewProduct?.productQty}}</span>
+                <span matLine>{{viewProduct?.productPrice}}</span>
+                <span matLine>{{viewProduct?.productDescription}}</span>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
 </mat-card>

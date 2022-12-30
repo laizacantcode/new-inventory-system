@@ -7,9 +7,12 @@ import { Products } from 'src/app/interface/products';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  @Input() viewProduct!: Products;
-  displayProducts = false;
+  @Input() viewProduct?: Products;
+  
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 }

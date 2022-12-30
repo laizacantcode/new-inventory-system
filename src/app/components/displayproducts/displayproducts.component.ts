@@ -30,6 +30,7 @@ export class DisplayproductsComponent implements OnInit {
   }
 
   viewProduct(productID: number) {
+    let viewprod = true;
     this.service
       .getProductInfo(productID)
       .subscribe((res: Products) => this.view.emit(res));
