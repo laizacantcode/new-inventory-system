@@ -31,6 +31,9 @@
           placeholder="Product ID"
           formControlName="productID"
         />
+        <mat-error *ngIf= "createProductForm.get('productID')?.errors?.['required']">Required.</mat-error>
+        <mat-error *ngIf= "createProductForm.get('productID')?.errors?.['minlength']">should contain atleast 6 numbers.</mat-error>
+        <mat-error *ngIf= "createProductForm.get('productID')?.errors?.['maxlength']">should contain maximum of 10 numbers only.</mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlex="25" appearance="outline">
@@ -41,6 +44,9 @@
           placeholder="Product Name"
           formControlName="productName"
         />
+        <mat-error *ngIf= "createProductForm.get('productName')?.errors?.['required']">Required.</mat-error>
+        <mat-error *ngIf= "createProductForm.get('productName')?.errors?.['minlength']">should contain atleast 6 characters.</mat-error>
+        <mat-error *ngIf= "createProductForm.get('productName')?.errors?.['maxlength']">should contain maximum of 15 characters only.</mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlex="25" appearance="outline">
@@ -51,6 +57,8 @@
           placeholder="Product Quantity"
           formControlName="productQty"
         />
+        <mat-error *ngIf= "createProductForm.get('productQty')?.errors?.['required']">Required.</mat-error>
+        <mat-error *ngIf= "createProductForm.get('productQty')?.errors?.['min']">should have atleat 1 quantity</mat-error>
         <button class="qty" matSuffix (click)="increment()">
           <mat-icon>keyboard_arrow_up</mat-icon>
         </button>
@@ -67,6 +75,8 @@
           placeholder="Product Price"
           formControlName="productPrice"
         />
+        <mat-error *ngIf= "createProductForm.get('productPrice')?.errors?.['required']">Required.</mat-error>
+        <mat-error *ngIf= "createProductForm.get('productPrice')?.errors?.['min']">Valid price</mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlex="100" appearance="outline">
@@ -78,6 +88,7 @@
           formControlName="productDescription"
         >
         </textarea>
+        <mat-error *ngIf= "createProductForm.get('productDescription')?.errors?.['required']">Required.</mat-error>
       </mat-form-field>
 
       <button mat-flat-button fxFlex="100" *ngIf="formButton === false">
