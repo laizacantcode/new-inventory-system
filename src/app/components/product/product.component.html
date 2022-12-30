@@ -1,12 +1,14 @@
-<mat-card *ngIf="view == true">
-    <mat-card-content>
-        <mat-list>
-            <mat-list-item>
-                <span matLine><strong>{{viewProduct?.productName}}</strong></span>
-                <span matLine>{{viewProduct?.productQty}}</span>
-                <span matLine>{{viewProduct?.productPrice}}</span>
-                <span matLine>{{viewProduct?.productDescription}}</span>
-            </mat-list-item>
-        </mat-list>
-    </mat-card-content>
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <span matLine
+          ><strong>{{ viewProduct?.productName }}</strong></span
+        >
+        <span matLine>{{ viewProduct?.productQty }}</span>
+        <span matLine>{{ viewProduct?.productPrice }}</span>
+        <span matLine>{{ viewProduct?.productDescription }}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
 </mat-card>
