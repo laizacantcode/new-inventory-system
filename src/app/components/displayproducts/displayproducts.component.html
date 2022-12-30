@@ -2,7 +2,7 @@
   <div>
     <mat-list dense class="mat-elevation-z8">
       <mat-list-item *ngFor="let product of productList | async">
-        <span matLine><strong>{{ product.id }}</strong></span>
+        <span matLine><strong>{{ product.productID }}</strong></span>
         <span matLine>{{ product.productName }}</span>
         <button mat-icon-button>
           <mat-icon class="view-button" matTooltip="VIEW" (click)="viewProduct(product.id)">visibility</mat-icon>
