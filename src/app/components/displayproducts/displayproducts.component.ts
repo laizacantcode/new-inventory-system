@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Products } from 'src/app/interface/products';
 import { InventoryService } from 'src/app/service/inventory.service';
@@ -8,7 +14,7 @@ import { InventoryService } from 'src/app/service/inventory.service';
   templateUrl: './displayproducts.component.html',
   styleUrls: ['./displayproducts.component.scss'],
 })
-export class DisplayproductsComponent implements OnInit {
+export class DisplayproductsComponent implements OnInit, OnDestroy {
   productList!: Observable<Products[]>;
   @Output() currentData = new EventEmitter<Products>();
   @Output() view = new EventEmitter<Products>();
@@ -31,6 +37,7 @@ export class DisplayproductsComponent implements OnInit {
   viewProduct(productID: number) {
     this.service
       .getProductInfo(productID)
-      .subscribe((res: Products) => this.view.emit(res));
+      .subscribe((res: Products) => this.view.emit(res)).unsubscribe;
   }
+  ngOnDestroy(): void {}
 }

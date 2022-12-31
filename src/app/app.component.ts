@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { increment, decrement, reset } from './ngrx/actions/counter.actions';
@@ -16,7 +16,7 @@ import { InventoryService } from './service/inventory.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   createProductForm!: FormGroup;
   formState!: any;
   count$: Observable<number>;
@@ -35,11 +35,29 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.createProductForm = new FormGroup({
-      productID: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(10)]),
-      productName: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
-      productQty: new FormControl('0', [Validators.required, Validators.min(1)]),
-      productPrice: new FormControl(null, [Validators.required, Validators.min(1)]),
-      productDescription: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(100)] ),
+      productID: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(10),
+      ]),
+      productName: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(15),
+      ]),
+      productQty: new FormControl('0', [
+        Validators.required,
+        Validators.min(1),
+      ]),
+      productPrice: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+      ]),
+      productDescription: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(1000),
+      ]),
     });
   }
   openForm(openForm: boolean) {
@@ -100,4 +118,5 @@ export class AppComponent implements OnInit {
         console.log(res);
       });
   }
+  ngOnDestroy(): void {}
 }

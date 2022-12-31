@@ -33,3 +33,14 @@ body {
   --font-family: "Source Sans Pro", sans-serif;
   --margin: 15px;
 }
+
+.success-snackbar {
+  background-color: #c6ebc5;
+  color: #367e18;
+  border-radius: 30px;
+}
+.warning-snackbar {
+  background-color: var(--secondary-color-red);
+  color: white;
+  border-radius: 30px;
+}
