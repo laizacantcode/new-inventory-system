@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Products } from '../interface/products';
 import { Observable } from 'rxjs';
@@ -8,13 +8,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root',
 })
-export class InventoryService {
+export class InventoryService implements OnDestroy {
   constructor(private http: HttpClient, private snackbar: MatSnackBar) {}
 
   displayProducts(): Observable<Products[]> {
     return this.http
       .get<Products[]>('https://63a19bb5a543280f775bc426.mockapi.io/Products')
-      .pipe(map((data) => Object.values(data)));
+      .pipe(map((data) => Object.values(data)))
   }
 
   delete(productID: number) {
@@ -45,7 +45,7 @@ export class InventoryService {
   }
 
   getProductInfo(productID: number) {
-    return this.http.get<any>(
+    return this.http.get<Products>(
       `https://63a19bb5a543280f775bc426.mockapi.io/Products/${productID}`
     )
   }
@@ -55,5 +55,8 @@ export class InventoryService {
       `https://63a19bb5a543280f775bc426.mockapi.io/Products/${productID}`,
       productInfo
     );
+  }
+
+  ngOnDestroy(): void {
   }
 }

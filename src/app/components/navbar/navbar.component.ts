@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
   openModal(){
       this.formState = true
       this.openForm.emit(this.formState)
-      console.log(this.formState)
   }
 
 }

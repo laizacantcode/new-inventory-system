@@ -94,8 +94,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.store.dispatch(reset());
   }
 
-  close() {
+  close(productForm: FormGroupDirective) {
     this.formState = false;
+    productForm.resetForm();
   }
 
   patch(currentData: Products) {
@@ -116,7 +117,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((res: any) => {
         console.log('DATA UPDATED SUCCESSFULLY.');
         console.log(res);
-      });
+      }).unsubscribe;
   }
   ngOnDestroy(): void {}
 }
